@@ -10,8 +10,6 @@ import { cookies } from "next/headers"
 import { equal } from "assert"
 import { eq } from "drizzle-orm"
 export const signUpFunc = async (values: z.infer<typeof signUpSchema>)=>{
-    console.log(values)
-
     const hashedPassword = await new Argon2id().hash(values.password)
     const userId = generateId(16)
     try {
